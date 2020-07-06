@@ -6,7 +6,7 @@ The CPython API is only to be invoked directly from within `src/nrnpython`.
 The way to support using Python from outside this folder without introducing a dependency on Python is to declare a function
 pointer outside the folder, then have that function pointer be set by something inside e.g. `src/nrnpython/nrnpy_hoc.cpp`.
 All uses outside the folder must first check to see if the funciton pointer is not NULL; if it is NULL then Python is not
-available.
+available. This is done for a number of functions in the `nrnpy_hoc()` function in `src/nrnpython/nrnpy_hoc.cpp`.
 
 
 
