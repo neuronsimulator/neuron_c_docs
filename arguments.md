@@ -11,6 +11,9 @@ Check for the existence of an argument
 
 Use `ifarg(n)` to check to see if there is an `n`th argument (the arguments are numbered from 1).
 
+Many existing functions and methods currently do not check for too many arguments, however doing
+so is recommended as it indicates a probable user error.
+
 Check the type of an argument
 -----------------------------
 
@@ -31,4 +34,8 @@ Relevant functions include:
        PyObject* obj = nrnpy_ho2po(*hoc_objgetarg(n))
 - `hoc_pgetarg(n)` -- returns a `double**`
 - `gargstr(n)`
-- `getarg(n)` -- returns a `double*`
+- `getarg(n)` -- returns a `double*`. Python bools, ints, and floats are all valid inputs.
+
+Note: attempting to get the wrong type of an argument displays a "bad stack access" message and
+a Python `RuntimeError` exception gets raised. If multiple types of arguments are possible,
+you must check the type of the argument first.
